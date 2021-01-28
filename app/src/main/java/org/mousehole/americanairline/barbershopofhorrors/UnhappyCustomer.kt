@@ -5,7 +5,8 @@ import android.os.Handler
 import android.util.Log
 import org.mousehole.americanairline.barbershopofhorrors.Constants.LOG_TAG
 
-class UnhappyCustomer(customer: Customer, handler : Handler) : CustomerWork(customer, handler) {
+class UnhappyCustomer(customer: Customer, handler : Handler, contextDelegate: ContextDelegate) :
+        CustomerWork(customer, handler, contextDelegate) {
     private var workDone : Int = 0
     override fun getWorkDone() = workDone
     override fun run() {
@@ -24,7 +25,7 @@ class UnhappyCustomer(customer: Customer, handler : Handler) : CustomerWork(cust
         customer.barber = "${customer.name} beat up ${Thread.currentThread().name}!"
         customer.progress = 100
         sendCustomer(customer)
-        val mp = MediaPlayer.create(MainActivity.getContext(), R.raw.rhodes)
+        val mp = MediaPlayer.create(contextDelegate.getContext(), R.raw.rhodes)
         mp.start()
         Log.d(LOG_TAG, "${customer.name} hates what ${Thread.currentThread().name} has done with their hair, and injures them terribly.")
         throw Exception("Killing thread.")

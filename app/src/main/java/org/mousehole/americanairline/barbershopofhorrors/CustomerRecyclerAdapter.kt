@@ -10,7 +10,7 @@ import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import org.mousehole.americanairline.barbershopofhorrors.Constants.LOG_TAG
 
-class CustomerRecyclerAdapter(var customers:MutableList<Customer>) : RecyclerView.Adapter<CustomerRecyclerAdapter.CustomerViewHolder>() {
+class CustomerRecyclerAdapter(private var customers:MutableList<Customer>) : RecyclerView.Adapter<CustomerRecyclerAdapter.CustomerViewHolder>() {
     class CustomerViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
         val customerNameTextView : TextView = itemView.findViewById(R.id.customer_name_textview)
         val estimatedTimeTextView : TextView = itemView.findViewById(R.id.estimated_time_textview)

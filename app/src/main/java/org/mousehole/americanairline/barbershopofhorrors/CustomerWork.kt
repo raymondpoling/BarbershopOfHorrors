@@ -1,5 +1,6 @@
 package org.mousehole.americanairline.barbershopofhorrors
 
+import android.content.Context
 import android.media.MediaPlayer
 import android.os.Bundle
 import android.os.Handler
@@ -7,7 +8,12 @@ import android.os.Message
 import android.util.Log
 import org.mousehole.americanairline.barbershopofhorrors.Constants.LOG_TAG
 
-open class CustomerWork(val customer: Customer, private val handler: Handler) : Runnable {
+open class CustomerWork(val customer: Customer, private val handler: Handler, protected val contextDelegate: ContextDelegate) : Runnable {
+
+    interface ContextDelegate {
+        fun getContext() : Context
+    }
+
     private var workDone : Int = 0
     open fun getWorkDone() = workDone
     override fun run() {
@@ -26,7 +32,7 @@ open class CustomerWork(val customer: Customer, private val handler: Handler) : 
         Log.d(LOG_TAG, "${customer.name} has finished their appointment, and ${Thread.currentThread().name} will take another customer.")
         customer.progress = 100
         customer.barber = "Done by ${Thread.currentThread().name}"
-        val mp = MediaPlayer.create(MainActivity.getContext(), R.raw.blip)
+        val mp = MediaPlayer.create(contextDelegate.getContext(), R.raw.blip)
         mp.start()
         sendCustomer(customer)
     }
