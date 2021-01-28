@@ -1,9 +1,11 @@
 package org.mousehole.americanairline.barbershopofhorrors
 
-import android.os.Handler
-import java.util.concurrent.*
+import java.util.concurrent.BlockingDeque
+import java.util.concurrent.LinkedBlockingDeque
+import java.util.concurrent.ThreadPoolExecutor
+import java.util.concurrent.TimeUnit
 
-class BarberShop(handler: Handler, customers : List<CustomerWork>) {
+class BarberShop(customers : List<CustomerWork>) {
 
     private val NUM_THREADS = 4
     private val MAX_THREADS = 4

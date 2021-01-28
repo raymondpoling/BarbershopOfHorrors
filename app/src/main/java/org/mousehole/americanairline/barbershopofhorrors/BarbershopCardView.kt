@@ -40,19 +40,4 @@ class BarbershopCardView(context : Context, attributeSet: AttributeSet) : CardVi
 
         typedArray.recycle()
     }
-
-    fun setCustomerName(name:String) { customerNameTextView.text = name }
-    fun getCustomerName() = customerNameTextView.text.toString()
-
-    fun setOrder(order:String) { orderTextView.text = order}
-    fun getOrder() = orderTextView.text.toString()
-
-    fun setProgress(progress:Int) { serviceProgressBar.progress = progress }
-    fun getProgress() = Integer.parseInt(serviceProgressBar.progress.toString())
-
-    fun setEstimatedTime(time:Int) { estimatedTimeTextView.text = "${time}mins"}
-    fun getEstimatedTime() = Integer.parseInt(estimatedTimeTextView.text.dropLast(4).toString())
-
-    fun setBarber(barber:String) { barberNameTextView.text = barber }
-    fun getBarber() = barberNameTextView.text.toString()
 }

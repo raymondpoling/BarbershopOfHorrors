@@ -1,13 +1,13 @@
 package org.mousehole.americanairline.barbershopofhorrors
 
 import android.content.Context
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.os.Handler
 import android.os.Looper
 import android.os.Message
+import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.RecyclerView
-import kotlin.properties.Delegates
+import androidx.recyclerview.widget.SimpleItemAnimator
 
 class MainActivity : AppCompatActivity(), Handler.Callback {
 
@@ -22,7 +22,7 @@ class MainActivity : AppCompatActivity(), Handler.Callback {
     private lateinit var handler: Handler
 
     val customerWork : MutableList<CustomerWork> by lazy {
-        mutableListOf<CustomerWork>(
+        mutableListOf(
             CustomerWork(Customer("James", "Beard Trim", 12), handler),
             CustomerWork(Customer("Jamie", "Shampoo and Haircut", 17), handler),
             CustomerWork(Customer("Gladys", "Shampoo, Hair Coloring, and Perm", 44), handler),
@@ -52,10 +52,11 @@ class MainActivity : AppCompatActivity(), Handler.Callback {
         customers = customerWork.map { it.customer }.toMutableList()
 
         customerList = findViewById(R.id.customer_recyclerview)
+        (customerList.getItemAnimator() as SimpleItemAnimator).supportsChangeAnimations = false
         adapter = CustomerRecyclerAdapter(customers)
         customerList.adapter = adapter
 
-        BarberShop(handler, customerWork)
+        BarberShop(customerWork)
 
     }
 

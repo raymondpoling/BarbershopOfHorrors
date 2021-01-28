@@ -9,8 +9,7 @@ data class Customer(val name: String, val order: String, val estimatedTime: Int,
             parcel.readString()?:"",
             parcel.readInt(),
             parcel.readString()?:"",
-            parcel.readInt()) {
-    }
+            parcel.readInt())
 
     override fun writeToParcel(parcel: Parcel, flags: Int) {
         parcel.writeString(name)
