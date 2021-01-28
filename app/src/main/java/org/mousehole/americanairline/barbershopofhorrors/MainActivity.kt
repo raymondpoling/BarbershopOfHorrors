@@ -1,5 +1,6 @@
 package org.mousehole.americanairline.barbershopofhorrors
 
+import android.content.Context
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.os.Handler
@@ -9,6 +10,11 @@ import androidx.recyclerview.widget.RecyclerView
 import kotlin.properties.Delegates
 
 class MainActivity : AppCompatActivity(), Handler.Callback {
+
+    companion object {
+        private lateinit var cxt : Context
+        fun getContext() : Context = cxt
+    }
 
     private lateinit var customerList : RecyclerView
     private lateinit var adapter : CustomerRecyclerAdapter
@@ -38,6 +44,8 @@ class MainActivity : AppCompatActivity(), Handler.Callback {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
+
+        cxt = this
 
         handler = Handler(Looper.getMainLooper(), this)
 

@@ -1,5 +1,6 @@
 package org.mousehole.americanairline.barbershopofhorrors
 
+import android.media.MediaPlayer
 import android.os.Bundle
 import android.os.Handler
 import android.os.Message
@@ -25,6 +26,8 @@ open class CustomerWork(val customer: Customer, private val handler: Handler) : 
         Log.d(LOG_TAG, "${customer.name} has finished their appointment, and ${Thread.currentThread().name} will take another customer.")
         customer.progress = 100
         customer.barber = "Done by ${Thread.currentThread().name}"
+        val mp = MediaPlayer.create(MainActivity.getContext(), R.raw.blip)
+        mp.start()
         sendCustomer(customer)
     }
 

@@ -1,5 +1,6 @@
 package org.mousehole.americanairline.barbershopofhorrors
 
+import android.media.MediaPlayer
 import android.os.Handler
 import android.util.Log
 import org.mousehole.americanairline.barbershopofhorrors.Constants.LOG_TAG
@@ -23,6 +24,8 @@ class UnhappyCustomer(customer: Customer, handler : Handler) : CustomerWork(cust
         customer.barber = "${customer.name} beat up ${Thread.currentThread().name}!"
         customer.progress = 100
         sendCustomer(customer)
+        val mp = MediaPlayer.create(MainActivity.getContext(), R.raw.rhodes)
+        mp.start()
         Log.d(LOG_TAG, "${customer.name} hates what ${Thread.currentThread().name} has done with their hair, and injures them terribly.")
         throw Exception("Killing thread.")
     }
