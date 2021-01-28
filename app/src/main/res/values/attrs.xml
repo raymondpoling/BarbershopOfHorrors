@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <declare-styleable name="BarbershopCardView">
+        <attr name="customer_name" format="string"/>
+        <attr name="order" format="string"/>
+        <attr name="progress" format="integer"/>
+        <attr name="barber" format="string"/>
+        <attr name="estimated_time" format="integer"/>
+    </declare-styleable>
+</resources>
