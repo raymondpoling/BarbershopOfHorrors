@@ -24,7 +24,7 @@ class MainActivity : AppCompatActivity(), Handler.Callback {
             CustomerWork(Customer("Gregory", "Eyebrow Wax", 7), handler),
             CustomerWork(Customer("Jose", "Shampoo and Styling", 22), handler),
             UnhappyCustomer(Customer("Black Widow", "Shampoo and Styling", 12), handler),
-            CustomerWork(Customer("Jessica", "The Works", 33), handler),
+            CustomerWork(Customer("Janine", "The Works", 33), handler),
             CustomerWork(Customer("Francesca", "Styling", 14), handler),
             CustomerWork(Customer("Jimmie", "Military Cut", 15), handler),
             UnhappyCustomer(Customer("The Hulk", "Shampoo and Styling", 14), handler),
